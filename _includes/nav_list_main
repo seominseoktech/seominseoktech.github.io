@@ -1,0 +1,42 @@
+{% assign sum = site.posts | size %}
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">{{ site.data.ui-text[site.locale].menu_label }}</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+	✏️ <span>전체 글 수</style> <span>{{sum}}</style> <span>개</style>
+      </li>
+      <li>
+		{% for category in site.categories %}
+                    {% if category[0] == "Algorithm" %}
+                        <a href="/categories/algorithm" class=""><span class="nav__sub-title">Algorithm ({{category[1].size}})</span></a>
+                    {% endif %}
+                {% endfor %}
+		{% for category in site.categories %}
+                    {% if category[0] == "Blog" %}
+                        <a href="/categories/blog" class=""><span class="nav__sub-title">Blog ({{category[1].size}})</span></a>
+                    {% endif %}
+                {% endfor %}
+		{% for category in site.categories %}
+                    {% if category[0] == "Graduate School" %}
+                        <a href="/categories/graduate school" class=""><span class="nav__sub-title">Graduate School ({{category[1].size}})</span></a>
+                    {% endif %}
+                {% endfor %}
+        {% for category in site.categories %}
+                {% if category[0] == "Review" %}
+                    <a href="/categories/review" class=""><span class="nav__sub-title">Review ({{category[1].size}})</span></a>
+                {% endif %}
+            {% endfor %}
+        <span class="nav__sub-title">ETC</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "." %}
+                        <li><a href="/categories/dot" class="">. ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+      </li>
+  </ul>
+</nav>
